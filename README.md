@@ -1,2 +1,0 @@
-# afsanchez.github.io
-LANDING
