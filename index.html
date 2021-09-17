@@ -77,43 +77,44 @@
     <script src="scripts/jquery.slim.min.js?ver=1.2.0"></script>
     <script src="scripts/bootstrap.bundle.min.js?ver=1.2.0"></script>
     <script src="scripts/main.js?ver=1.2.0"></script>
-<div id="div-cookies" style="display: none;">
-    Necesitamos usar cookies para que funcione todo, si permanece aquí acepta su uso, más información en
-    <a hreflang="es" href="/info/aviso-legal">Aviso Legal</a>
-    y la
-    <a hreflang="es" href="/info/politica-de-privacidad">Política de Privacidad</a>.
-    <button type="button" class="btn btn-sm btn-primary" onclick="acceptCookies()">
-        Acepto el uso de cookies
-    </button>
+<div id=»cookies» style=»position: fixed; left: 0px; right: 0px; bottom: 0px; width: 100%; min-height: 40px; background: #cfcfcf; color: #184b6a; z-index: 99999;»>
+<div style=»width: 100%; position: absolute; padding-left: 5px; font-family: verdana; font-size: 12px; top: 30%; text-align: center;»&gtUsamos cookies propias y de terceros para ayudarte en tu navegación. Si continúas navegando consideramos que aceptas el uso de cookies. &lta style=»padding: 6px; background: #4682B4; text-decoration: none; color: #fff; border-radius: 5px;»><b>OK</b></a> <a style=»padding-left: 5px; text-decoration: none; color: #636363;» href=»https://www.tuweb.com/politica-cookies» target=»_blank» rel=»nofollow»><u>Más información</u></a></div>
+
 </div>
-<style>
-#div-cookies {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    background-color: white;
-    box-shadow: 0px -5px 15px gray;
-    padding: 7px;
-    text-align: center;
-    z-index: 99;
-    color: black;
-}
-</style>
 <script>
-function checkAcceptCookies() {
-    if (localStorage.acceptCookies == 'true') {
-    } else {
-        $('#div-cookies').show();
-    }
+function getCookie(c_name){
+var c_value = document.cookie;
+var c_start = c_value.indexOf(» » + c_name + «=»);
+if (c_start == -1){
+c_start = c_value.indexOf(c_name + «=»);
 }
-function acceptCookies() {
-    localStorage.acceptCookies = 'true';
-    $('#div-cookies').hide();
+if (c_start == -1){
+c_value = null;
+}else{
+c_start = c_value.indexOf(«=», c_start) + 1;
+var c_end = c_value.indexOf(«;», c_start);
+if (c_end == -1){
+c_end = c_value.length;
 }
-$(document).ready(function() {
-    checkAcceptCookies();
-});
+c_value = unescape(c_value.substring(c_start,c_end));
+}
+return c_value;
+}
+
+function setCookie(c_name,value,exdays){
+var exdate=new Date();
+exdate.setDate(exdate.getDate() + exdays);
+var c_value=escape(value) + ((exdays==null) ? «» : «; expires=»+exdate.toUTCString());
+document.cookie=c_name + «=» + c_value;
+}
+
+if(getCookie(‘aviso’)!=»1″){
+document.getElementById(«barracookies»).style.display=»block»;
+}
+function PonerCookie(){
+setCookie(‘aviso’,’1′,365);
+document.getElementById(«barracookies»).style.display=»none»;
+}
 </script>
   </body>
     
