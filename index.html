@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="shortcut icon" type="image/png" href="favicon-32x32.png"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -76,6 +77,43 @@
     <script src="scripts/jquery.slim.min.js?ver=1.2.0"></script>
     <script src="scripts/bootstrap.bundle.min.js?ver=1.2.0"></script>
     <script src="scripts/main.js?ver=1.2.0"></script>
+<div id="div-cookies" style="display: none;">
+    Necesitamos usar cookies para que funcione todo, si permanece aquí acepta su uso, más información en
+    <a hreflang="es" href="/info/aviso-legal">Aviso Legal</a>
+    y la
+    <a hreflang="es" href="/info/politica-de-privacidad">Política de Privacidad</a>.
+    <button type="button" class="btn btn-sm btn-primary" onclick="acceptCookies()">
+        Acepto el uso de cookies
+    </button>
+</div>
+<style>
+#div-cookies {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px -5px 15px gray;
+    padding: 7px;
+    text-align: center;
+    z-index: 99;
+}
+</style>
+<script>
+function checkAcceptCookies() {
+    if (localStorage.acceptCookies == 'true') {
+    } else {
+        $('#div-cookies').show();
+    }
+}
+function acceptCookies() {
+    localStorage.acceptCookies = 'true';
+    $('#div-cookies').hide();
+}
+$(document).ready(function() {
+    checkAcceptCookies();
+});
+</script>
   </body>
     
 </html>
